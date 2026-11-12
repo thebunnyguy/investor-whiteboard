@@ -1,0 +1,13 @@
+{
+  "name": "investor-whiteboard",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Investor whiteboard, a plugin for Claude Code and Codex. No dependencies: this file only gives `npm test` a home.",
+  "license": "MIT",
+  "type": "module",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "test": "node --test",
+    "demo": "node skills/whiteboard/scripts/wb.mjs sample"
+  }
+}

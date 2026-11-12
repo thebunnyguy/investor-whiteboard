@@ -1,0 +1,12 @@
+{
+  "name": "investor-whiteboard",
+  "interface": { "displayName": "Investor Whiteboard" },
+  "plugins": [
+    {
+      "name": "investor-whiteboard",
+      "source": { "source": "local", "path": "./" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Productivity"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Investor Whiteboard"
+  short_description: "Explain a company as live flowchart maps on a whiteboard"
+  default_prompt: "Use $whiteboard to open the investor whiteboard, then explain the company I name on it."

@@ -1,0 +1,1064 @@
+{
+  "_note": "Brightleaf Tea is made up. Every name, figure and source here is fiction, written to test the whiteboard.",
+  "company": {
+    "name": "Brightleaf Tea",
+    "ticker": "BLEAF",
+    "exchange": "Sample Exchange",
+    "line": "Buys tea from growers, blends and packs it, and sells it in shops under its own brand."
+  },
+  "maps": [
+    {
+      "id": "business",
+      "question": "What does Brightleaf sell, and who buys it?",
+      "summary": "It sells packaged tea under one brand. Most of it goes to households through small shops, and a growing part goes to cafes and offices in bulk.",
+      "columns": [
+        "The company",
+        "What it sells",
+        "How it reaches buyers",
+        "Who buys"
+      ],
+      "sources": [
+        {
+          "id": "ar25",
+          "title": "Brightleaf annual report 2025 (sample)",
+          "publisher": "Brightleaf Tea",
+          "date": "2025-06-30",
+          "url": "https://example.com/brightleaf-annual-report-2025"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "packs",
+          "label": "Everyday tea packs",
+          "kind": "product",
+          "col": 1,
+          "sub": "Loose tea and tea bags for the home",
+          "value": "71% of sales",
+          "source": "ar25",
+          "detail": "The ordinary packs people buy for home. This is where most of the money comes from, and people buy them again every few weeks."
+        },
+        {
+          "id": "premium",
+          "label": "Premium blends",
+          "kind": "product",
+          "col": 1,
+          "sub": "Higher-priced flavoured and green teas",
+          "value": "17% of sales",
+          "source": "ar25",
+          "detail": "Smaller packs sold at a higher price. Each one earns more than an everyday pack, but far fewer are sold."
+        },
+        {
+          "id": "bulk",
+          "label": "Bulk tea for cafes",
+          "kind": "product",
+          "col": 1,
+          "sub": "Large sacks sold by weight",
+          "value": "12% of sales",
+          "source": "ar25",
+          "detail": "Tea sold in big sacks to places that brew it for their own customers. It earns less per kilo but orders are large and steady."
+        },
+        {
+          "id": "co",
+          "label": "Brightleaf Tea",
+          "kind": "company",
+          "col": 0,
+          "sub": "Blends, packs and sells tea",
+          "detail": "The company in the middle. It does not grow tea. It chooses and blends leaves, packs them, and puts its brand on them."
+        },
+        {
+          "id": "dist",
+          "label": "Distributors",
+          "kind": "channel",
+          "col": 2,
+          "sub": "Local firms that deliver to small shops",
+          "detail": "Middlemen who carry the packs from Brightleaf's warehouses to thousands of small shops, and take a cut for doing so."
+        },
+        {
+          "id": "chains",
+          "label": "Supermarket chains",
+          "kind": "channel",
+          "col": 2,
+          "sub": "Sold directly, in large orders",
+          "detail": "Big shops buy straight from Brightleaf. They order a lot at once, and push hard on price."
+        },
+        {
+          "id": "direct",
+          "label": "Direct sales team",
+          "kind": "channel",
+          "col": 2,
+          "sub": "Sells bulk tea to businesses",
+          "detail": "Brightleaf's own sales people, who visit cafes and offices and take their bulk orders."
+        },
+        {
+          "id": "homes",
+          "label": "Households",
+          "kind": "customer",
+          "col": 3,
+          "sub": "People buying tea for home",
+          "detail": "Families who buy a pack every few weeks. Many stay with one brand for years, which is why the brand matters so much."
+        },
+        {
+          "id": "cafes",
+          "label": "Cafes and offices",
+          "kind": "customer",
+          "col": 3,
+          "sub": "Brew tea for their own customers and staff",
+          "detail": "Businesses that brew tea by the pot. They care about steady supply and price more than the brand on the sack."
+        }
+      ],
+      "edges": [
+        {
+          "from": "co",
+          "to": "packs",
+          "label": "makes"
+        },
+        {
+          "from": "co",
+          "to": "premium",
+          "label": "makes"
+        },
+        {
+          "from": "co",
+          "to": "bulk",
+          "label": "makes"
+        },
+        {
+          "from": "packs",
+          "to": "dist",
+          "label": "sold through"
+        },
+        {
+          "from": "packs",
+          "to": "chains",
+          "label": "sold through"
+        },
+        {
+          "from": "premium",
+          "to": "chains",
+          "label": "sold through"
+        },
+        {
+          "from": "bulk",
+          "to": "direct",
+          "label": "sold by"
+        },
+        {
+          "from": "dist",
+          "to": "homes",
+          "label": "through small shops"
+        },
+        {
+          "from": "chains",
+          "to": "homes",
+          "label": "sell to"
+        },
+        {
+          "from": "direct",
+          "to": "cafes",
+          "label": "sells to"
+        }
+      ],
+      "walkthrough": [
+        {
+          "title": "Start with the company",
+          "focus": [
+            "co"
+          ],
+          "text": "Brightleaf sits in the middle. It does not grow tea. Its job is to blend it, pack it and put a brand people trust on the box."
+        },
+        {
+          "title": "Three things on the shelf",
+          "focus": [
+            "packs",
+            "premium",
+            "bulk"
+          ],
+          "text": "It sells three kinds of tea. Everyday packs bring in about 71 of every 100 rupees. Premium blends and bulk sacks make up the rest."
+        },
+        {
+          "title": "Getting it to the shops",
+          "focus": [
+            "packs",
+            "premium",
+            "bulk",
+            "dist",
+            "chains",
+            "direct"
+          ],
+          "text": "The tea reaches buyers three ways: through local distributors who serve small shops, straight to supermarket chains, and through its own sales team for bulk orders."
+        },
+        {
+          "title": "Who ends up buying",
+          "focus": [
+            "homes",
+            "cafes"
+          ],
+          "text": "Most tea ends up in homes, where people buy the same brand again and again. Cafes and offices buy in bulk and care more about price."
+        },
+        {
+          "title": "What this means",
+          "focus": [
+            "packs",
+            "dist",
+            "homes"
+          ],
+          "text": "The heart of this business is one path: everyday packs, through distributors, into homes. If that path weakens, the whole company feels it."
+        }
+      ]
+    },
+    {
+      "id": "money",
+      "question": "For every 100 rupees of sales, where does the money go?",
+      "summary": "About 58 goes on buying tea and packing. After running costs and advertising, roughly 12 is left as profit before tax.",
+      "columns": [
+        "Money coming in",
+        "Sales",
+        "Where it goes",
+        "What is left",
+        "Where the profit goes"
+      ],
+      "nodes": [
+        {
+          "id": "r-packs",
+          "label": "Everyday packs",
+          "kind": "revenue",
+          "col": 0,
+          "value": "71 of every 100",
+          "source": "ar25",
+          "detail": "Money from ordinary home packs. By far the biggest stream."
+        },
+        {
+          "id": "r-premium",
+          "label": "Premium blends",
+          "kind": "revenue",
+          "col": 0,
+          "value": "17 of every 100",
+          "source": "ar25",
+          "detail": "Money from higher-priced blends. Smaller, but each pack leaves more profit."
+        },
+        {
+          "id": "r-bulk",
+          "label": "Bulk tea",
+          "kind": "revenue",
+          "col": 0,
+          "value": "12 of every 100",
+          "source": "ar25",
+          "detail": "Money from sacks sold to cafes and offices. Steady, with thin profit."
+        },
+        {
+          "id": "sales",
+          "label": "Total sales",
+          "kind": "company",
+          "col": 1,
+          "sub": "Everything customers paid in the year",
+          "value": "Rs 2,400 crore",
+          "source": "ar25",
+          "detail": "All the money that came in from selling tea during the year, before any costs are taken off."
+        },
+        {
+          "id": "c-tea",
+          "label": "Buying tea and packing",
+          "kind": "cost",
+          "col": 2,
+          "value": "58 of every 100",
+          "source": "ar25",
+          "detail": "The biggest cost by far: the tea leaves themselves, plus boxes, bags and the work of packing. When tea prices rise, this grows."
+        },
+        {
+          "id": "c-ads",
+          "label": "Advertising",
+          "kind": "cost",
+          "col": 2,
+          "value": "9 of every 100",
+          "source": "ar25",
+          "detail": "Money spent keeping the brand in people's minds. Cutting it lifts profit this year and can hurt sales later."
+        },
+        {
+          "id": "c-run",
+          "label": "Staff, transport and the rest",
+          "kind": "cost",
+          "col": 2,
+          "value": "21 of every 100",
+          "source": "ar25",
+          "detail": "Wages, lorries, warehouses, offices and what distributors keep. These rise slowly whether or not sales grow."
+        },
+        {
+          "id": "profit",
+          "label": "Profit before tax",
+          "kind": "profit",
+          "col": 3,
+          "value": "12 of every 100",
+          "source": "ar25",
+          "detail": "What is left once every cost is paid, before the government takes tax. This is what a year of selling tea actually earned."
+        },
+        {
+          "id": "div",
+          "label": "Paid to shareholders",
+          "kind": "cash",
+          "col": 4,
+          "value": "About 5 of every 100",
+          "basis": "estimate",
+          "detail": "The part of profit handed to the owners as dividends. Worked out from the dividend per share, so treat it as a rough figure."
+        }
+      ],
+      "edges": [
+        {
+          "from": "r-packs",
+          "to": "sales",
+          "kind": "money",
+          "weight": 71
+        },
+        {
+          "from": "r-premium",
+          "to": "sales",
+          "kind": "money",
+          "weight": 17
+        },
+        {
+          "from": "r-bulk",
+          "to": "sales",
+          "kind": "money",
+          "weight": 12
+        },
+        {
+          "from": "sales",
+          "to": "c-tea",
+          "kind": "money",
+          "weight": 58,
+          "label": "pays for"
+        },
+        {
+          "from": "sales",
+          "to": "c-ads",
+          "kind": "money",
+          "weight": 9,
+          "label": "pays for"
+        },
+        {
+          "from": "sales",
+          "to": "c-run",
+          "kind": "money",
+          "weight": 21,
+          "label": "pays for"
+        },
+        {
+          "from": "sales",
+          "to": "profit",
+          "kind": "money",
+          "weight": 12,
+          "label": "leaves"
+        },
+        {
+          "from": "profit",
+          "to": "div",
+          "kind": "money",
+          "weight": 5,
+          "label": "part goes to"
+        }
+      ],
+      "walkthrough": [
+        {
+          "title": "Money comes in",
+          "focus": [
+            "r-packs",
+            "r-premium",
+            "r-bulk",
+            "sales"
+          ],
+          "text": "Three streams add up to total sales. The thick line is everyday packs: 71 of every 100 rupees."
+        },
+        {
+          "title": "The biggest bite",
+          "focus": [
+            "sales",
+            "c-tea"
+          ],
+          "text": "More than half of it, 58 of every 100, goes straight back out to buy tea and pack it. This is the cost to watch."
+        },
+        {
+          "title": "Keeping the business running",
+          "focus": [
+            "c-ads",
+            "c-run"
+          ],
+          "text": "Another 30 goes on advertising, wages, transport and the rest. These don't shrink much in a bad year."
+        },
+        {
+          "title": "What is left",
+          "focus": [
+            "sales",
+            "profit"
+          ],
+          "text": "That leaves about 12 of every 100 as profit before tax. A small rise in tea prices can eat a large part of it."
+        },
+        {
+          "title": "Where profit goes",
+          "focus": [
+            "profit",
+            "div"
+          ],
+          "text": "Roughly 5 of every 100 is paid out to shareholders. The rest stays in the company. That payout figure is an estimate."
+        }
+      ]
+    },
+    {
+      "id": "supply",
+      "question": "What has to arrive, and from whom, before a pack reaches the shelf?",
+      "summary": "Tea comes from estates and auctions, is blended and packed at two plants, and travels through warehouses to shops. One auction region supplies most of the leaf.",
+      "columns": [
+        "What it needs",
+        "Who supplies it",
+        "Inside Brightleaf",
+        "On the way to buyers"
+      ],
+      "nodes": [
+        {
+          "id": "leaf",
+          "label": "Tea leaf",
+          "kind": "input",
+          "col": 0,
+          "sub": "The main raw material",
+          "detail": "Dried tea leaf, bought by the tonne. Its price changes with the weather and the harvest, and Brightleaf cannot control it."
+        },
+        {
+          "id": "packmat",
+          "label": "Boxes and tea-bag paper",
+          "kind": "input",
+          "col": 0,
+          "detail": "Cartons, foil and the special paper used for tea bags. Cheap next to the tea itself, but a pack cannot ship without them."
+        },
+        {
+          "id": "auction",
+          "label": "Northern tea auctions",
+          "kind": "supplier",
+          "col": 1,
+          "sub": "Most of the leaf is bought here",
+          "value": "About 60% of leaf",
+          "basis": "estimate",
+          "detail": "Open auctions where estates sell their leaf. Brightleaf buys most of its tea here, so a poor harvest in this one region hits it hard."
+        },
+        {
+          "id": "estates",
+          "label": "Contracted estates",
+          "kind": "supplier",
+          "col": 1,
+          "sub": "Bought directly at agreed prices",
+          "detail": "A handful of estates that sell straight to Brightleaf on yearly contracts. This steadies the price for part of its needs."
+        },
+        {
+          "id": "printers",
+          "label": "Packaging makers",
+          "kind": "supplier",
+          "col": 1,
+          "detail": "Several firms that print and supply cartons and paper. Easy to switch between, so not a worry."
+        },
+        {
+          "id": "blend",
+          "label": "Blending",
+          "kind": "process",
+          "col": 2,
+          "sub": "Mixing leaves so every pack tastes the same",
+          "detail": "Tasters mix leaf from many lots so the tea tastes the same all year. This skill is a large part of what the brand is."
+        },
+        {
+          "id": "pack",
+          "label": "Two packing plants",
+          "kind": "asset",
+          "col": 2,
+          "sub": "Where tea goes into bags and boxes",
+          "detail": "Two factories do all the packing. If one stops, the other cannot cover the whole country for long."
+        },
+        {
+          "id": "wh",
+          "label": "Regional warehouses",
+          "kind": "process",
+          "col": 3,
+          "detail": "Stores around the country that hold packed tea close to the shops, so orders can be filled in a day or two."
+        },
+        {
+          "id": "shops",
+          "label": "Shops and cafes",
+          "kind": "customer",
+          "col": 3,
+          "detail": "The last stop before the buyer: small shops, supermarkets and the cafes that take bulk tea."
+        }
+      ],
+      "edges": [
+        {
+          "from": "leaf",
+          "to": "auction",
+          "label": "sold at"
+        },
+        {
+          "from": "leaf",
+          "to": "estates",
+          "label": "grown by"
+        },
+        {
+          "from": "packmat",
+          "to": "printers",
+          "label": "made by"
+        },
+        {
+          "from": "auction",
+          "to": "blend",
+          "label": "supplies",
+          "kind": "depends"
+        },
+        {
+          "from": "estates",
+          "to": "blend",
+          "label": "supply"
+        },
+        {
+          "from": "printers",
+          "to": "pack",
+          "label": "supply"
+        },
+        {
+          "from": "blend",
+          "to": "pack",
+          "label": "then packed"
+        },
+        {
+          "from": "pack",
+          "to": "wh",
+          "label": "trucked to"
+        },
+        {
+          "from": "wh",
+          "to": "shops",
+          "label": "delivered to"
+        }
+      ],
+      "walkthrough": [
+        {
+          "title": "It starts with the leaf",
+          "focus": [
+            "leaf",
+            "packmat"
+          ],
+          "text": "Two things must arrive: tea leaf and packaging. The leaf is what matters. It is most of the cost and its price moves with the harvest."
+        },
+        {
+          "title": "Where the leaf comes from",
+          "focus": [
+            "auction",
+            "estates"
+          ],
+          "text": "Most leaf is bought at auctions in one northern region. The rest comes from estates on fixed contracts, which smooths the price a little."
+        },
+        {
+          "title": "Inside the company",
+          "focus": [
+            "blend",
+            "pack"
+          ],
+          "text": "Tasters blend the leaf so each pack tastes the same, then two plants pack it. Two plants is not many: a stoppage at one is a real problem."
+        },
+        {
+          "title": "Out to the shops",
+          "focus": [
+            "pack",
+            "wh",
+            "shops"
+          ],
+          "text": "Packed tea is trucked to regional warehouses and from there to shops and cafes, usually within a day or two of an order."
+        },
+        {
+          "title": "The weak point",
+          "focus": [
+            "auction",
+            "blend"
+          ],
+          "text": "The dashed blue line is the one to remember. Brightleaf depends on one auction region for most of its tea, and it has no say over the price there."
+        }
+      ]
+    },
+    {
+      "id": "technology",
+      "question": "What know-how makes it work, and how hard is it to copy?",
+      "summary": "Nothing here is high technology. The edge is blending skill and a fast ordering system for distributors. Both can be copied, but slowly.",
+      "columns": [
+        "Know-how and tools",
+        "What it makes possible",
+        "What it protects"
+      ],
+      "nodes": [
+        {
+          "id": "tasters",
+          "label": "Blending recipes and tasters",
+          "kind": "tech",
+          "col": 0,
+          "sub": "Decades of practice, held by a small team",
+          "detail": "A small group of expert tasters and the recipes they keep. This is craft more than technology, and it leaves with the people who hold it."
+        },
+        {
+          "id": "lines",
+          "label": "Fast tea-bag machines",
+          "kind": "tech",
+          "col": 0,
+          "sub": "Bought from a machine maker abroad",
+          "detail": "High-speed packing machines. Any rival with money can buy the same ones, so they give no lasting edge."
+        },
+        {
+          "id": "app",
+          "label": "Ordering app for distributors",
+          "kind": "tech",
+          "col": 0,
+          "sub": "Built in-house over five years",
+          "detail": "A phone app distributors use to order and track deliveries. It makes Brightleaf easier to deal with than its rivals."
+        },
+        {
+          "id": "same",
+          "label": "The same taste every time",
+          "kind": "strength",
+          "col": 1,
+          "detail": "Because of the blending, a pack bought today tastes like one bought last year. That is why people stay with the brand."
+        },
+        {
+          "id": "cheap",
+          "label": "Low cost per pack",
+          "kind": "strength",
+          "col": 1,
+          "detail": "Fast machines keep the packing cost low. Useful, but rivals have this too."
+        },
+        {
+          "id": "stock",
+          "label": "Shops rarely run out",
+          "kind": "strength",
+          "col": 1,
+          "detail": "The app tells Brightleaf what each area is selling, so warehouses can be restocked before shelves go empty."
+        },
+        {
+          "id": "brand",
+          "label": "The brand",
+          "kind": "asset",
+          "col": 2,
+          "sub": "The thing rivals cannot buy",
+          "detail": "A name people trust for one steady taste. Everything else on this map exists to keep that trust."
+        },
+        {
+          "id": "leave",
+          "label": "Tasters could leave",
+          "kind": "risk",
+          "col": 2,
+          "detail": "The blending skill sits with a few people. If they moved to a rival, some of the edge would go with them."
+        }
+      ],
+      "edges": [
+        {
+          "from": "tasters",
+          "to": "same",
+          "label": "gives",
+          "kind": "supports"
+        },
+        {
+          "from": "lines",
+          "to": "cheap",
+          "label": "gives",
+          "kind": "supports"
+        },
+        {
+          "from": "app",
+          "to": "stock",
+          "label": "gives",
+          "kind": "supports"
+        },
+        {
+          "from": "same",
+          "to": "brand",
+          "label": "builds",
+          "kind": "supports"
+        },
+        {
+          "from": "stock",
+          "to": "brand",
+          "label": "builds",
+          "kind": "supports"
+        },
+        {
+          "from": "leave",
+          "to": "brand",
+          "label": "could weaken",
+          "kind": "threatens"
+        },
+        {
+          "from": "tasters",
+          "to": "leave",
+          "label": "depends on people",
+          "kind": "depends"
+        }
+      ],
+      "walkthrough": [
+        {
+          "title": "No secret machine",
+          "focus": [
+            "tasters",
+            "lines",
+            "app"
+          ],
+          "text": "Brightleaf has three kinds of know-how: blending skill, fast packing machines and an ordering app. None of it is high technology."
+        },
+        {
+          "title": "What the skill buys",
+          "focus": [
+            "tasters",
+            "same"
+          ],
+          "text": "Blending is the important one. It is why the tea tastes the same year after year."
+        },
+        {
+          "title": "What the tools buy",
+          "focus": [
+            "lines",
+            "cheap",
+            "app",
+            "stock"
+          ],
+          "text": "The machines keep costs low, which rivals can match. The app keeps shelves full, which is harder to match quickly."
+        },
+        {
+          "title": "It all feeds the brand",
+          "focus": [
+            "same",
+            "stock",
+            "brand"
+          ],
+          "text": "Steady taste and full shelves are what make people trust the name. The brand is the real asset."
+        },
+        {
+          "title": "Where it is fragile",
+          "focus": [
+            "tasters",
+            "leave",
+            "brand"
+          ],
+          "text": "The skill lives in a few people. If they left, the taste could drift, and the brand with it."
+        }
+      ]
+    },
+    {
+      "id": "competition",
+      "layout": "hub",
+      "question": "Who else wants the same buyers, and what keeps them out?",
+      "summary": "Two large national brands and cheap local tea fight for the same shelf. Coffee and shop-brand tea pull buyers away. Habit and distribution reach protect Brightleaf.",
+      "nodes": [
+        {
+          "id": "co",
+          "label": "Brightleaf Tea",
+          "kind": "company",
+          "center": true,
+          "sub": "Third largest packaged tea brand",
+          "detail": "Brightleaf in the middle, with everyone who wants its buyers around it."
+        },
+        {
+          "id": "crown",
+          "label": "Crown Tea",
+          "kind": "competitor",
+          "group": "Direct rivals",
+          "sub": "The market leader",
+          "detail": "The biggest packaged tea brand. It spends far more on advertising and can afford to cut prices for longer."
+        },
+        {
+          "id": "river",
+          "label": "Riverbank",
+          "kind": "competitor",
+          "group": "Direct rivals",
+          "sub": "Strong in the south",
+          "detail": "A national brand close to Brightleaf in size, and stronger than it in southern cities."
+        },
+        {
+          "id": "loose",
+          "label": "Unbranded loose tea",
+          "kind": "competitor",
+          "group": "Direct rivals",
+          "sub": "Cheap, sold by weight",
+          "detail": "Tea sold loose with no brand. It is cheaper, and it is what many buyers switch to when money is tight."
+        },
+        {
+          "id": "ownlabel",
+          "label": "Supermarket own brands",
+          "kind": "entrant",
+          "group": "New challengers",
+          "detail": "Chains selling tea under their own name, on the best shelf, at a lower price."
+        },
+        {
+          "id": "coffee",
+          "label": "Coffee",
+          "kind": "substitute",
+          "group": "Other ways to do the job",
+          "detail": "Younger city buyers are drinking more coffee. It does not replace tea at home yet, but it takes some of the growth."
+        },
+        {
+          "id": "habit",
+          "label": "Buyers' habit",
+          "kind": "strength",
+          "group": "What protects it",
+          "detail": "People who like a tea's taste rarely switch. This keeps sales steady even when rivals advertise heavily."
+        },
+        {
+          "id": "reach",
+          "label": "Reach into small shops",
+          "kind": "strength",
+          "group": "What protects it",
+          "detail": "Brightleaf's distributors reach small shops that newer brands cannot get to cheaply."
+        }
+      ],
+      "edges": [
+        {
+          "from": "crown",
+          "to": "co",
+          "kind": "competes",
+          "label": "fights on price"
+        },
+        {
+          "from": "river",
+          "to": "co",
+          "kind": "competes"
+        },
+        {
+          "from": "loose",
+          "to": "co",
+          "kind": "competes",
+          "label": "undercuts"
+        },
+        {
+          "from": "ownlabel",
+          "to": "co",
+          "kind": "threatens",
+          "label": "takes shelf space"
+        },
+        {
+          "from": "coffee",
+          "to": "co",
+          "kind": "threatens",
+          "label": "pulls young buyers"
+        },
+        {
+          "from": "habit",
+          "to": "co",
+          "kind": "supports",
+          "label": "keeps buyers"
+        },
+        {
+          "from": "reach",
+          "to": "co",
+          "kind": "supports",
+          "label": "keeps it on shelves"
+        }
+      ],
+      "walkthrough": [
+        {
+          "title": "Brightleaf in the middle",
+          "focus": [
+            "co"
+          ],
+          "text": "Everything around the centre wants the same buyers, or helps Brightleaf keep them."
+        },
+        {
+          "title": "The direct rivals",
+          "focus": [
+            "co",
+            "crown",
+            "river",
+            "loose"
+          ],
+          "text": "Two national brands fight it head on, and cheap loose tea undercuts all three. Crown is the one with the deepest pockets."
+        },
+        {
+          "title": "Pressure from the sides",
+          "focus": [
+            "co",
+            "ownlabel",
+            "coffee"
+          ],
+          "text": "Supermarkets now sell their own tea, and coffee is winning younger buyers. Neither is a crisis yet. Both are growing."
+        },
+        {
+          "title": "What holds the line",
+          "focus": [
+            "co",
+            "habit",
+            "reach"
+          ],
+          "text": "Two things protect Brightleaf: people stick with a taste they like, and its packs reach small shops others struggle to serve."
+        }
+      ]
+    },
+    {
+      "id": "thesis",
+      "question": "What would have to be true for this to be a good business to own, and what would break it?",
+      "summary": "The case rests on buyers staying loyal while tea costs stay manageable. It breaks if leaf prices jump and Brightleaf cannot raise its own prices.",
+      "columns": [
+        "The idea",
+        "What must be true",
+        "For and against",
+        "What to watch"
+      ],
+      "nodes": [
+        {
+          "id": "claim",
+          "label": "Steady brand, slowly rising profit",
+          "kind": "claim",
+          "col": 0,
+          "basis": "view",
+          "detail": "The idea in one line: people keep buying the same tea, so sales are steady, and profit can grow slowly if costs behave. This is a way to think about the company, not advice."
+        },
+        {
+          "id": "p-loyal",
+          "label": "Buyers stay loyal",
+          "kind": "pillar",
+          "col": 1,
+          "detail": "The whole idea needs people to keep choosing Brightleaf over cheaper tea and shop brands."
+        },
+        {
+          "id": "p-price",
+          "label": "Can raise prices when tea costs more",
+          "kind": "pillar",
+          "col": 1,
+          "detail": "Tea leaf is most of the cost. For profit to hold, Brightleaf has to be able to pass higher leaf prices on to buyers."
+        },
+        {
+          "id": "p-premium",
+          "label": "Premium blends keep growing",
+          "kind": "pillar",
+          "col": 1,
+          "detail": "Profit grows fastest if more sales come from higher-priced blends."
+        },
+        {
+          "id": "e-repeat",
+          "label": "Most sales are repeat buying",
+          "kind": "evidence",
+          "col": 2,
+          "source": "ar25",
+          "detail": "The company reports that most of its packs are bought by households who bought the brand before."
+        },
+        {
+          "id": "r-leaf",
+          "label": "A bad harvest lifts leaf prices",
+          "kind": "risk",
+          "col": 2,
+          "detail": "Most leaf comes from one auction region. A poor season there raises costs for everyone, and the cheapest brands win buyers."
+        },
+        {
+          "id": "r-own",
+          "label": "Shop brands take the shelf",
+          "kind": "risk",
+          "col": 2,
+          "detail": "If supermarkets push their own tea harder, Brightleaf loses its best shelf space where city buyers shop."
+        },
+        {
+          "id": "s-margin",
+          "label": "Profit per 100 of sales",
+          "kind": "signal",
+          "col": 3,
+          "detail": "Now about 12. If it falls for two or three reports in a row, costs are rising faster than Brightleaf can raise prices."
+        },
+        {
+          "id": "s-prem",
+          "label": "Share of sales from premium",
+          "kind": "signal",
+          "col": 3,
+          "detail": "Now 17 of every 100. Rising means the growth idea is working. Flat means it is not."
+        }
+      ],
+      "edges": [
+        {
+          "from": "claim",
+          "to": "p-loyal",
+          "label": "needs"
+        },
+        {
+          "from": "claim",
+          "to": "p-price",
+          "label": "needs"
+        },
+        {
+          "from": "claim",
+          "to": "p-premium",
+          "label": "needs"
+        },
+        {
+          "from": "e-repeat",
+          "to": "p-loyal",
+          "label": "supports",
+          "kind": "supports"
+        },
+        {
+          "from": "r-own",
+          "to": "p-loyal",
+          "label": "threatens",
+          "kind": "threatens"
+        },
+        {
+          "from": "r-leaf",
+          "to": "p-price",
+          "label": "tests",
+          "kind": "threatens"
+        },
+        {
+          "from": "p-price",
+          "to": "s-margin",
+          "label": "shows up in",
+          "kind": "depends"
+        },
+        {
+          "from": "p-premium",
+          "to": "s-prem",
+          "label": "shows up in",
+          "kind": "depends"
+        }
+      ],
+      "walkthrough": [
+        {
+          "title": "The idea",
+          "focus": [
+            "claim"
+          ],
+          "text": "Someone who owns this is betting on one thing: a trusted brand that sells steadily and earns a little more each year. This is a way to think, not advice."
+        },
+        {
+          "title": "Three things must hold",
+          "focus": [
+            "p-loyal",
+            "p-price",
+            "p-premium"
+          ],
+          "text": "For that to work, buyers must stay loyal, Brightleaf must be able to raise prices when tea costs more, and premium blends must keep growing."
+        },
+        {
+          "title": "What supports it",
+          "focus": [
+            "e-repeat",
+            "p-loyal"
+          ],
+          "text": "The company says most of its sales are repeat buying. That is real support for loyalty."
+        },
+        {
+          "title": "What could break it",
+          "focus": [
+            "r-leaf",
+            "p-price",
+            "r-own",
+            "p-loyal"
+          ],
+          "text": "A bad harvest would test whether it can raise prices. Supermarket brands would test loyalty. Either could break the idea."
+        },
+        {
+          "title": "How you would know",
+          "focus": [
+            "s-margin",
+            "s-prem"
+          ],
+          "text": "Two numbers tell you which way it is going: profit per 100 of sales, and how much of sales is premium. Watch them each time results come out."
+        }
+      ]
+    }
+  ],
+  "followUps": [
+    "What happens to profit if tea leaf costs 10% more?",
+    "Compare Brightleaf with Crown Tea",
+    "Explain the Supply chain map more simply"
+  ]
+}

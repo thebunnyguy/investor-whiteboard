@@ -1,0 +1,13 @@
+{
+  "name": "investor-whiteboard",
+  "owner": { "name": "thebunnyguy" },
+  "metadata": { "description": "Investor whiteboard: companies explained as live flowchart maps, for Claude Code." },
+  "plugins": [
+    {
+      "name": "investor-whiteboard",
+      "source": "./",
+      "description": "Name a company and watch six plain-language maps of it get drawn live: business, money flow, supply chain, technology, competition and thesis.",
+      "category": "productivity"
+    }
+  ]
+}

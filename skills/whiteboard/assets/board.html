@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Whiteboard</title>
+<link rel="icon" href="/favicon.svg">
+<link rel="stylesheet" href="/board.css">
+</head>
+<body>
+<main id="board" class="board" tabindex="0" aria-label="Whiteboard. Drag to move around, pinch or use the buttons to zoom.">
+  <div id="world" class="world">
+    <div id="marks"></div>
+    <svg id="links" class="links" aria-hidden="true" width="1" height="1">
+      <defs>
+        <marker id="tip-ink" class="tip tip-ink" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="13" markerHeight="13" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.5 1.5 11 6 1.5 10.5 4 6Z"/></marker>
+        <marker id="tip-green" class="tip tip-green" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="13" markerHeight="13" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.5 1.5 11 6 1.5 10.5 4 6Z"/></marker>
+        <marker id="tip-blue" class="tip tip-blue" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="13" markerHeight="13" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.5 1.5 11 6 1.5 10.5 4 6Z"/></marker>
+        <marker id="tip-red" class="tip tip-red" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="13" markerHeight="13" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.5 1.5 11 6 1.5 10.5 4 6Z"/></marker>
+      </defs>
+      <g id="link-layer"></g>
+    </svg>
+    <div id="heads"></div>
+    <div id="boxes"></div>
+    <div id="tags"></div>
+  </div>
+</main>
+
+<header class="top">
+  <div class="title" id="title" hidden>
+    <h1 id="co-name"></h1>
+    <p id="co-line" class="co-line"></p>
+    <div id="about" class="about" hidden>
+      <h2 id="map-question"></h2>
+      <p id="map-summary"></p>
+    </div>
+  </div>
+  <nav id="tabs" class="tabs" aria-label="Maps" hidden></nav>
+</header>
+
+<section id="empty" class="empty">
+  <h1>Name a company.</h1>
+  <p>Ask Claude Code or Codex to explain it. Six maps get drawn here while it works: the business, the money, the supply chain, the technology, the rivals, and the case for and against.</p>
+  <p class="empty-try">Try: <q>Explain this company on the whiteboard</q>, with the name of any company you like.</p>
+</section>
+
+<aside id="panel" class="panel" hidden aria-live="polite">
+  <button id="panel-close" class="plain panel-close" aria-label="Close details">Close</button>
+  <div id="panel-body"></div>
+</aside>
+
+<section id="walk" class="walk" hidden aria-live="polite">
+  <div class="walk-head"><span id="walk-count" class="walk-count"></span><button id="walk-close" class="plain">End the walk</button></div>
+  <h3 id="walk-title"></h3>
+  <p id="walk-text"></p>
+  <div class="walk-nav">
+    <button id="walk-back" class="btn">Back</button>
+    <div id="walk-dots" class="walk-dots" aria-hidden="true"></div>
+    <button id="walk-next" class="btn btn-ink">Next</button>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="foot-left">
+    <div id="follow" class="follow" hidden></div>
+    <div id="status" class="status" role="status" aria-live="polite"></div>
+    <p class="fine">For understanding a business. Not advice to buy or sell.</p>
+  </div>
+  <div class="foot-mid"><button id="walk-start" class="btn btn-ink btn-big" hidden>Walk me through it</button></div>
+  <div id="tools" class="tools" hidden>
+    <button id="redraw" class="btn" title="Watch this map being drawn again">Draw again</button>
+    <button id="show-key" class="btn" title="What the shapes and colours mean">Key</button>
+    <button id="show-sources" class="btn" title="Where the facts come from">Sources</button>
+    <span class="zoom">
+      <button id="zoom-out" class="btn btn-sq" aria-label="Zoom out">&minus;</button>
+      <button id="zoom-fit" class="btn" title="Fit the whole map on screen (F)">Fit</button>
+      <button id="zoom-in" class="btn btn-sq" aria-label="Zoom in">+</button>
+    </span>
+  </div>
+</footer>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script type="module" src="/board.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "name": "investor-whiteboard",
+  "version": "0.1.0",
+  "description": "Explains a company to an investor by drawing it live on a whiteboard in the browser: six flowchart maps (business, money flow, supply chain, technology, competition, thesis), each with a step-by-step walk-through in plain words, and a memory of how the investor likes things explained.",
+  "author": { "name": "thebunnyguy" },
+  "license": "MIT",
+  "keywords": ["investing", "company research", "flowchart", "whiteboard", "supply chain", "visualization"],
+  "skills": "./skills/",
+  "requires_local_executor": true,
+  "interface": {
+    "displayName": "Investor Whiteboard",
+    "shortDescription": "Companies explained as live flowchart maps",
+    "longDescription": "Name a company and Codex draws it on a whiteboard in your browser while it works: what the business sells and to whom, where the money comes from and goes, the supply chain, the technology, the rivals, and the case for and against. Every map has a step-by-step walk-through in plain words. It remembers how you like things explained, and shares that memory with Claude Code.",
+    "developerName": "thebunnyguy",
+    "category": "Productivity",
+    "capabilities": ["Interactive", "Read", "Write"],
+    "defaultPrompt": [
+      "Open the investor whiteboard",
+      "Explain this company on the whiteboard",
+      "Walk me through how this company makes money"
+    ],
+    "brandColor": "#1D1F27",
+    "screenshots": []
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "investor-whiteboard",
+  "version": "0.1.0",
+  "description": "Explains a company to an investor by drawing it live on a whiteboard in the browser: six flowchart maps (business, money flow, supply chain, technology, competition, thesis), each with a step-by-step walk-through in plain words, and a memory of how the investor likes things explained.",
+  "author": { "name": "thebunnyguy" },
+  "license": "MIT",
+  "keywords": ["investing", "company research", "flowchart", "whiteboard", "supply chain", "visualization"]
+}
