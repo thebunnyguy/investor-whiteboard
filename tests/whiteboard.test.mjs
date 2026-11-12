@@ -88,6 +88,24 @@ test('redrawing a map replaces it, and base maps keep their set order whatever o
   assert.equal(board.maps[0].summary, again.summary);
 });
 
+test('a map read back from the board can be edited and sent again unchanged', () => {
+  const board = newBoard({ name: 'Brightleaf Tea', line: 'Sells tea.' });
+  for (const m of sample.maps) putMap(board, m);
+  const printed = copy(board); // what `wb show` prints: every field, with "" or null where nothing was given
+  const known = new Set(printed.sources.map((s) => s.id));
+  for (const m of printed.maps) {
+    const { errors } = checkMap(m, known);
+    assert.deepEqual(errors, [], `${m.id}: ${errors.join(' / ')}`);
+    const before = copy(m);
+    putMap(board, m);
+    const after = copy(board.maps.find((x) => x.id === m.id));
+    assert.deepEqual({ ...after, drawnAt: 0 }, { ...before, drawnAt: 0 }, `${m.id} changed on the way round`);
+  }
+  const edited = printed.maps[0];
+  edited.nodes[0].value = '12 of every 100'; edited.nodes[0].source = []; edited.nodes[0].basis = '';
+  assert.ok(checkMap(edited, known).errors.some((e) => /with no "source"/.test(e)), 'an empty basis still needs a source for a figure');
+});
+
 test('the column names the skill recommends fit the limit the tool enforces', () => {
   const maps = fs.readFileSync(path.join(skill, 'references', 'maps.md'), 'utf8');
   const lines = [...maps.matchAll(/\*\*Columns:\*\* (.+)\./g)].map((m) => m[1]);

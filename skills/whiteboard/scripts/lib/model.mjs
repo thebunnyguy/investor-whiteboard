@@ -62,6 +62,9 @@ const EXPLAINS = /\(|\bmeans\b|\bthat is\b|\bwhich is\b|\bie\b|\bi\.e\./i;
 const str = (v) => (typeof v === 'string' ? v.trim() : '');
 const isId = (v) => typeof v === 'string' && /^[a-z0-9][a-z0-9_-]{0,39}$/.test(v);
 const list = (v) => (Array.isArray(v) ? v : v === undefined || v === null ? [] : [v]);
+// `wb show` prints every field, with "" or null where nothing was given. Those count as not given,
+// so a map printed by `show` can be edited and sent straight back.
+const given = (v) => v !== undefined && v !== null && v !== '';
 
 export function slug(text) {
   return String(text || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40) || 'board';
@@ -123,7 +126,7 @@ export function checkMap(map, known = new Set()) {
   if (!str(map.summary)) errors.push('"summary" is missing: one or two plain sentences giving the answer.');
   else if (str(map.summary).length > LIMITS.summary) errors.push(`"summary" is ${str(map.summary).length} characters; keep it to ${LIMITS.summary} or fewer.`);
 
-  const layout = map.layout === undefined ? 'columns' : map.layout;
+  const layout = given(map.layout) ? map.layout : 'columns';
   if (layout !== 'columns' && layout !== 'hub') errors.push(`"layout" must be "columns" or "hub" (got ${JSON.stringify(map.layout)}).`);
 
   const srcErrors = checkSources(map.sources);
@@ -153,7 +156,7 @@ export function checkMap(map, known = new Set()) {
     if (detail.length < 20) errors.push(`${at}: "detail" is missing or too short. Write one to three plain sentences: what this is and why it matters.`);
     else if (detail.length > LIMITS.detail) errors.push(`${at}: "detail" is ${detail.length} characters; keep it to ${LIMITS.detail} or fewer.`);
     if (str(n.value).length > LIMITS.value) errors.push(`${at}: "value" is ${str(n.value).length} characters; keep it to ${LIMITS.value} or fewer, for example "62% of sales".`);
-    if (n.basis !== undefined && !BASIS[n.basis]) errors.push(`${at}: "basis" must be reported, estimate or view.`);
+    if (given(n.basis) && !BASIS[n.basis]) errors.push(`${at}: "basis" must be reported, estimate or view.`);
     const cited = list(n.source);
     for (const s of cited) if (!sources.has(s)) errors.push(`${at}: source "${s}" isn't defined. Add it to this file's "sources", or cite one an earlier map defined.`);
     if (str(n.value) && !cited.length && n.basis !== 'estimate' && n.basis !== 'view') errors.push(`${at}: has a figure ("${str(n.value)}") with no "source". Cite where it comes from, or set "basis" to "estimate" if it is your own working.`);
@@ -191,9 +194,9 @@ export function checkMap(map, known = new Set()) {
     if (pairs.has(key)) errors.push(`${at}: "${e.from}" to "${e.to}" is linked twice. Keep one link and put both points in its label or detail.`);
     pairs.add(key);
     linked.add(e.from); linked.add(e.to);
-    if (e.kind !== undefined && !EDGE_KINDS[e.kind]) errors.push(`${at}: "kind" must be one of: ${Object.keys(EDGE_KINDS).join(', ')}.`);
+    if (given(e.kind) && !EDGE_KINDS[e.kind]) errors.push(`${at}: "kind" must be one of: ${Object.keys(EDGE_KINDS).join(', ')}.`);
     if (str(e.label).length > LIMITS.edgeLabel) errors.push(`${at}: label is ${str(e.label).length} characters; keep it to ${LIMITS.edgeLabel} or fewer. A verb phrase works best: "sells to", "pays", "depends on".`);
-    if (e.weight !== undefined && !(typeof e.weight === 'number' && e.weight > 0 && e.weight <= 100)) errors.push(`${at}: "weight" must be a number from 1 to 100 (a share of the whole, used for line thickness).`);
+    if (given(e.weight) && !(typeof e.weight === 'number' && e.weight > 0 && e.weight <= 100)) errors.push(`${at}: "weight" must be a number from 1 to 100 (a share of the whole, used for line thickness).`);
     for (const s of list(e.source)) if (!sources.has(s)) errors.push(`${at}: source "${s}" isn't defined.`);
     for (const w of jargonIn(str(e.label))) warnings.push(`${at}: "${w}" in label. Say it in everyday words.`);
   }
